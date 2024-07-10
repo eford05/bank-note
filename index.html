@@ -17,5 +17,39 @@
     <link rel="stylesheet" href="styles.css" />
     <title>BankNote | Bank On It</title>
   </head>
-  <body></body>
+  <body>
+    <header>
+      <h1>BankNote</h1>
+      <time class="dash-date"></time>
+      <button class="btn-header balance">Balance</button>
+      <button class="btn-header income">Income</button>
+      <button class="btn-header expense">Expenses</button>
+    </header>
+    <main>
+      <section id="balance-container">
+        <h2 id="balance-title">Balance</h2>
+        <div class="btn-container">
+          <button id="btn-income">Add Income</button>
+          <button id="btn-expense">Add Expense</button>
+        </div>
+        <!-- Add income form pop-up: description, amount, date -->
+        <form action="" id="add-income">
+          <h3 class="form-heading">Add Income</h3>
+          <input type="text" placeholder="Descripton" required />
+          <input type="number" placeholder="Amount" required />
+          <input type="date" />
+          <button class="add-btn income">+</button>
+        </form>
+        <!-- Add expense form pop-up: description, amount, date -->
+        <form action="" id="add-expense">
+          <h3 class="form-heading">Add Expense</h3>
+          <input type="text" placeholder="Descripton" required />
+          <input type="number" placeholder="Amount" required />
+          <input type="date" />
+          <button class="add-btn expense">+</button>
+        </form>
+      </section>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
 </html>
