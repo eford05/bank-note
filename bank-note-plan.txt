@@ -1,0 +1,9 @@
+BankNote Expense Tracker Plan:
+
+Track Expenses:
+- add income to budget
+- add expense categories
+- reduce budget for expenses
+- track dates for all changes to the budget
+- total expenses
+- current balance
