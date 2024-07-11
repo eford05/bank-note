@@ -29,13 +29,39 @@
       <section id="balance-container">
         <h2 id="balance-title">Balance</h2>
         <!-- Add income form pop-up: description, amount, date -->
-        <form action="" id="add-income">
+        <form action="" id="budget-form">
           <h3 class="form-heading">Add Income/Expense</h3>
-          <input type="text" placeholder="Descripton" required />
-          <input type="number" placeholder="Amount" required />
+          <input
+            id="budget-desc"
+            type="text"
+            placeholder="Descripton"
+            required
+          />
+          <input
+            id="budget-amount"
+            type="number"
+            placeholder="Amount"
+            required
+          />
           <input type="date" />
           <button class="budget-btn">+</button>
         </form>
+        <!-- One table to represent the budget, income, and expenses -->
+        <table>
+          <thead>
+            <tr>
+              <th scope="col"><abbr title="descripton">DESCR</abbr></th>
+              <th scope="col">Date</th>
+              <th scope="col"><abbr title="amount">Amt</abbr></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <th scope="row" colspan="2">Total</th>
+            <!-- Target the tfoot tr for total amount -->
+            <tr></tr>
+          </tfoot>
+        </table>
       </section>
     </main>
     <script type="module" src="app.js"></script>
