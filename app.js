@@ -10,10 +10,8 @@ let USDollar = new Intl.NumberFormat("en-US", {
 // Target form
 const budgetForm = document.forms["budget-form"];
 
-// Target Balance Buttons
-const btnBalance = document.querySelector("#btn-balance");
-const btnIncome = document.querySelector("#btn-income");
-const btnExpense = document.querySelector("#btn-expense");
+// Target All Balance Buttons
+let balanceButtons = document.querySelectorAll(".btn-header");
 
 budgetForm.addEventListener("submit", function (e) {
   // Prevent form from being sent
@@ -25,46 +23,49 @@ budgetForm.addEventListener("submit", function (e) {
     budgetForm.querySelector('input[type="number"').value
   ).toFixed(2);
   const date = budgetForm.querySelector('input[type="date"]').value;
+  // Select row amounts for total
+  const amounts = document.querySelectorAll(".amount");
 
   // Add table row and cells
   addTableRow(description, amount, date);
+  //Generate total
+  sumTotal("balance", amounts);
 });
 
-// Add Click Events to Balance, Income, and Expense buttons
-btnBalance.addEventListener("click", () => {
+// Add EventListener to all buttons
+balanceButtons.forEach((btn) => {
   // Select the tbody
   let expenseTable = document.querySelector("#expense-table");
   let rows = expenseTable.children;
+  // Select row amounts for total
+  const amounts = document.querySelectorAll(".amount");
 
-  Array.from(rows).forEach((row) => {
-    row.style.display = "table-row";
-  });
-});
-
-btnIncome.addEventListener("click", () => {
-  // Select the tbody
-  let expenseTable = document.querySelector("#expense-table");
-  let rows = expenseTable.children;
-
-  Array.from(rows).forEach((row) => {
-    if (!row.classList.contains("income")) {
-      row.style.display = "none";
+  btn.addEventListener("click", () => {
+    if (btn.classList.contains("btn-balance")) {
+      // Display all table rows
+      Array.from(rows).forEach((row) => {
+        row.style.display = "table-row";
+      });
+    } else if (btn.classList.contains("btn-income")) {
+      // Display table rows for income only
+      Array.from(rows).forEach((row) => {
+        if (!row.classList.contains("income")) {
+          row.style.display = "none";
+        } else {
+          row.style.display = "table-row";
+        }
+      });
+    } else if (btn.classList.contains("btn-expenses")) {
+      // Display table rows for expenses only
+      Array.from(rows).forEach((row) => {
+        if (!row.classList.contains("expense")) {
+          row.style.display = "none";
+        } else {
+          row.style.display = "table-row";
+        }
+      });
     } else {
-      row.style.display = "table-row";
-    }
-  });
-});
-
-btnExpense.addEventListener("click", () => {
-  // Select the tbody
-  let expenseTable = document.querySelector("#expense-table");
-  let rows = expenseTable.children;
-
-  Array.from(rows).forEach((row) => {
-    if (!row.classList.contains("expense")) {
-      row.style.display = "none";
-    } else {
-      row.style.display = "table-row";
+      return;
     }
   });
 });
@@ -81,8 +82,39 @@ let addTableRow = (value, amount, date) => {
   cellAmt.innerHTML = amount;
   cellDate.innerHTML = date;
 
+  //   Add class amount to cellAmt
+  cellAmt.classList.add("amount");
+
   // Add class of income or expense to new table row
   amount > 0 ? row.classList.add("income") : row.classList.add("expense");
 
   currentIndex++;
+};
+
+// Total amounts from the rows based on the type of total
+let sumTotal = (amounts, totalType) => {
+  let total = 0;
+
+  switch (totalType) {
+    //Add all amounts
+    case "balance":
+      amounts.forEach((amount) => (total += amount));
+      break;
+
+    // Add only income to the total
+    case "income":
+      amounts.forEach((amount) =>
+        amount > 0 ? (total += amount) : total === total
+      );
+      break;
+
+    // Add only the expenses
+    case "expenses":
+      amounts.forEach((amount) =>
+        amount < 0 ? (total += amount) : total === total
+      );
+      break;
+  }
+
+  return total;
 };

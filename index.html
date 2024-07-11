@@ -21,9 +21,9 @@
     <header>
       <h1>BankNote</h1>
       <time class="dash-date"></time>
-      <button id="btn-balance" class="btn-header">Balance</button>
-      <button id="btn-income" class="btn-header">Income</button>
-      <button id="btn-expense" class="btn-header">Expenses</button>
+      <button class="btn-header btn-balance">Balance</button>
+      <button class="btn-header btn-income">Income</button>
+      <button class="btn-header btn-expenses">Expenses</button>
     </header>
     <main>
       <section id="balance-container">
@@ -58,7 +58,7 @@
           <tbody id="expense-table"></tbody>
           <tfoot>
             <th scope="row" colspan="2">Total</th>
-
+            <td class="total"></td>
             <!-- Target the tfoot tr for total amount -->
             <tr></tr>
           </tfoot>
