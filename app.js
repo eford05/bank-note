@@ -10,6 +10,11 @@ let USDollar = new Intl.NumberFormat("en-US", {
 // Target form
 const budgetForm = document.forms["budget-form"];
 
+// Target Balance Buttons
+const btnBalance = document.querySelector("#btn-balance");
+const btnIncome = document.querySelector("#btn-income");
+const btnExpense = document.querySelector("#btn-expense");
+
 budgetForm.addEventListener("submit", function (e) {
   // Prevent form from being sent
   e.preventDefault();
@@ -25,13 +30,52 @@ budgetForm.addEventListener("submit", function (e) {
   addTableRow(description, amount, date);
 });
 
+// Add Click Events to Balance, Income, and Expense buttons
+btnBalance.addEventListener("click", () => {
+  // Select the tbody
+  let expenseTable = document.querySelector("#expense-table");
+  let rows = expenseTable.children;
+
+  Array.from(rows).forEach((row) => {
+    row.style.display = "table-row";
+  });
+});
+
+btnIncome.addEventListener("click", () => {
+  // Select the tbody
+  let expenseTable = document.querySelector("#expense-table");
+  let rows = expenseTable.children;
+
+  Array.from(rows).forEach((row) => {
+    if (!row.classList.contains("income")) {
+      row.style.display = "none";
+    } else {
+      row.style.display = "table-row";
+    }
+  });
+});
+
+btnExpense.addEventListener("click", () => {
+  // Select the tbody
+  let expenseTable = document.querySelector("#expense-table");
+  let rows = expenseTable.children;
+
+  Array.from(rows).forEach((row) => {
+    if (!row.classList.contains("expense")) {
+      row.style.display = "none";
+    } else {
+      row.style.display = "table-row";
+    }
+  });
+});
+
 // Add row when budget form is submitted
 let addTableRow = (value, amount, date) => {
   let expenseTable = document.getElementById("expense-table");
   let row = expenseTable.insertRow(currentIndex);
   let cellDesc = row.insertCell(0);
-  let cellAmt = row.insertCell(1);
-  let cellDate = row.insertCell(2);
+  let cellDate = row.insertCell(1);
+  let cellAmt = row.insertCell(2);
 
   cellDesc.innerHTML = value;
   cellAmt.innerHTML = amount;
