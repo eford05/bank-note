@@ -1,11 +1,6 @@
 "use strict";
 // Keep track of new Rows
 let currentIndex = 0;
-// Set up US currency formatter
-let USDollar = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
 
 // Target form
 const budgetForm = document.forms["budget-form"];
@@ -23,13 +18,12 @@ budgetForm.addEventListener("submit", function (e) {
     budgetForm.querySelector('input[type="number"').value
   ).toFixed(2);
   const date = budgetForm.querySelector('input[type="date"]').value;
-  // Select row amounts for total
-  const amounts = document.querySelectorAll(".amount");
 
   // Add table row and cells
   addTableRow(description, amount, date);
-  //Generate total
-  sumTotal("balance", amounts);
+
+  // Calculate Total
+  sumTotal("balance");
 });
 
 // Add EventListener to all buttons
@@ -37,8 +31,6 @@ balanceButtons.forEach((btn) => {
   // Select the tbody
   let expenseTable = document.querySelector("#expense-table");
   let rows = expenseTable.children;
-  // Select row amounts for total
-  const amounts = document.querySelectorAll(".amount");
 
   btn.addEventListener("click", () => {
     if (btn.classList.contains("btn-balance")) {
@@ -46,6 +38,8 @@ balanceButtons.forEach((btn) => {
       Array.from(rows).forEach((row) => {
         row.style.display = "table-row";
       });
+      // Calculate Total
+      sumTotal("balance");
     } else if (btn.classList.contains("btn-income")) {
       // Display table rows for income only
       Array.from(rows).forEach((row) => {
@@ -55,6 +49,8 @@ balanceButtons.forEach((btn) => {
           row.style.display = "table-row";
         }
       });
+      // Calculate Total Income
+      sumTotal("income");
     } else if (btn.classList.contains("btn-expenses")) {
       // Display table rows for expenses only
       Array.from(rows).forEach((row) => {
@@ -64,6 +60,8 @@ balanceButtons.forEach((btn) => {
           row.style.display = "table-row";
         }
       });
+      // Calculate Total Expenses
+      sumTotal("expense");
     } else {
       return;
     }
@@ -79,7 +77,7 @@ let addTableRow = (value, amount, date) => {
   let cellAmt = row.insertCell(2);
 
   cellDesc.innerHTML = value;
-  cellAmt.innerHTML = amount;
+  cellAmt.innerHTML = parseFloat(amount).toFixed(2);
   cellDate.innerHTML = date;
 
   //   Add class amount to cellAmt
@@ -92,29 +90,39 @@ let addTableRow = (value, amount, date) => {
 };
 
 // Total amounts from the rows based on the type of total
-let sumTotal = (amounts, totalType) => {
-  let total = 0;
+let sumTotal = (totalType) => {
+  // Set up US currency formatter
+  let USDollar = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
 
-  switch (totalType) {
-    //Add all amounts
-    case "balance":
-      amounts.forEach((amount) => (total += amount));
-      break;
+  let sum = 0.0;
+  let total = document.querySelector("#total");
+  // Select row amounts for total
+  let amounts = document.querySelectorAll(".amount");
 
-    // Add only income to the total
-    case "income":
-      amounts.forEach((amount) =>
-        amount > 0 ? (total += amount) : total === total
-      );
-      break;
+  Array.from(amounts).forEach((amount) => {
+    amount = parseFloat(amount.innerHTML);
 
-    // Add only the expenses
-    case "expenses":
-      amounts.forEach((amount) =>
-        amount < 0 ? (total += amount) : total === total
-      );
-      break;
-  }
+    switch (totalType) {
+      case "balance":
+        sum += amount;
+        break;
 
-  return total;
+      case "income":
+        if (amount > 0) {
+          sum += amount;
+        }
+        break;
+      case "expense":
+        if (amount < 0) {
+          sum += amount;
+        }
+        break;
+    }
+  });
+
+  // Set the total with sum in currency format
+  total.innerHTML = USDollar.format(sum);
 };
