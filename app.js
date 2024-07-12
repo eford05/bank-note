@@ -2,11 +2,16 @@
 // Keep track of new Rows
 let currentIndex = 0;
 
+let date = new Date().toLocaleDateString();
+
 // Target form
 const budgetForm = document.forms["budget-form"];
 
 // Target All Balance Buttons
 let balanceButtons = document.querySelectorAll(".btn-header");
+
+let dashDate = document.querySelector(".dash-date");
+dashDate.innerHTML = date;
 
 budgetForm.addEventListener("submit", function (e) {
   // Prevent form from being sent

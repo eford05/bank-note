@@ -55,9 +55,173 @@ ol {
   font-style: normal;
 }
 
+abbr {
+  text-decoration: none;
+}
+
+/* Common Flex Direction */
+body,
+header,
+#balance-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Color Variables */
 :root {
   --lite-bg-color: #fff3f0;
   --accent-pink: #f76d6c;
   --accent-green: #10606a;
+  --accent-gold: #edb96f;
+}
+
+body,
+header,
+main,
+footer {
+  width: 100%;
+}
+
+body {
+  min-height: 100vh;
+  align-items: space-between;
+}
+
+/* Header Styles */
+
+header {
+  margin: 1.5rem 0 1rem;
+  gap: 0.5rem;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 500;
+}
+
+.dash-date {
+  font-size: 1.5rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
+
+.btn-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-header {
+  width: 180px;
+  font-size: 1.6rem;
+  color: white;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+}
+
+.btn-balance {
+  background-color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+}
+
+.btn-income {
+  background-color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+}
+
+.btn-expenses {
+  background-color: var(--accent-pink);
+  border: 1px solid var(--accent-pink);
+}
+
+/* The Balance */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+#balance-container {
+  width: fit-content;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+details {
+  width: 500px;
+}
+
+#budget-form {
+  display: flex;
+  gap: 1rem;
+  background-color: var(--lite-bg-color);
+  padding: 2rem 4rem;
+  border-radius: 1rem;
+  margin: 1rem 0;
+}
+
+.form-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: inline;
+}
+
+.budget-btn {
+  background-color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+  color: white;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+input,
+input[type="placeholder"] {
+  font-size: 1.2rem;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  min-width: 500px;
+  font-size: 1.2rem;
+  border-collapse: collapse;
+  margin: 0.5rem 0;
+  text-align: right;
+}
+
+thead tr,
+tfoot {
+  background-color: var(--lite-bg-color);
+  font-weight: bold;
+}
+
+table tr:nth-child(2) {
+  background-color: #fff3f056;
+}
+
+table th,
+table td {
+  padding: 1rem;
+}
+
+table th:first-child,
+table tbody td:first-child,
+tfoot td:first-child {
+  text-align: left;
+}
+
+table tbody tr {
+  border-bottom: 1px solid var(--accent-gold);
+}
+
+/* Footer */
+footer {
+  background-color: var(--accent-green);
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+  text-align: center;
 }
