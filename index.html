@@ -35,27 +35,29 @@
           <p>
             Type a description for the income or expense category. Enter a
             positive number for amounts that are income based and negative
-            numbers for amounts that are expense based. Lastly click on the
+            numbers for amounts that are expense based. Lastly, click on the
             calendar and choose a date.
           </p>
         </details>
         <!-- Add income form pop-up: description, amount, date -->
         <form action="" id="budget-form">
           <h3 class="form-heading">Add Income/Expense</h3>
-          <input
-            id="budget-desc"
-            type="text"
-            placeholder="Descripton"
-            required
-          />
-          <input
-            id="budget-amount"
-            type="number"
-            placeholder="Amount"
-            required
-          />
-          <input type="date" />
-          <button class="budget-btn">+</button>
+          <div class="form-wrapper">
+            <input
+              id="budget-desc"
+              type="text"
+              placeholder="Descripton"
+              required
+            />
+            <input
+              id="budget-amount"
+              type="number"
+              placeholder="Amount"
+              required
+            />
+            <input type="date" />
+            <button class="budget-btn">+</button>
+          </div>
         </form>
         <!-- One table to represent the budget, income, and expenses -->
         <table>
@@ -75,7 +77,6 @@
           </tfoot>
         </table>
       </section>
-      <aside><!-- Charts Maybe As Extra Info --></aside>
     </main>
     <footer>Copyright &copy BankNote</footer>
     <script type="module" src="app.js"></script>
