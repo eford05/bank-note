@@ -23,6 +23,8 @@ budgetForm.addEventListener("submit", function (e) {
     budgetForm.querySelector('input[type="number"').value
   ).toFixed(2);
   const date = budgetForm.querySelector('input[type="date"]').value;
+  // Select row amounts
+  let amounts = document.querySelectorAll(".amount");
 
   // Add table row and cells
   addTableRow(description, amount, date);
@@ -87,6 +89,11 @@ let addTableRow = (value, amount, date) => {
 
   //   Add class amount to cellAmt
   cellAmt.classList.add("amount");
+
+  //Change font color of cell depending on cellAmount
+  parseFloat(cellAmt.innerHTML) >= 0
+    ? (cellAmt.style.color = "#10606a")
+    : (cellAmt.style.color = "#f76d6c");
 
   // Add class of income or expense to new table row
   amount > 0 ? row.classList.add("income") : row.classList.add("expense");
