@@ -52,26 +52,98 @@ p,
 ul,
 ol,
 details,
-tbody td {
+tbody td,
+.dash-date {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   font-style: normal;
 }
 
+/* Display Flex Column */
+body,
+header,
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Responsive width for containers */
+header,
+main {
+  width: min(900px, 100% - 3rem);
+}
+
+/* width 100% */
+details,
+#budget-form,
+table {
+  width: 100%;
+}
+
 /* Variables */
 :root {
+  /* Colors */
   --lite-bg-color: #fff3f0;
   --accent-pink: #f76d6c;
   --accent-green: #10606a;
   --accent-gold: #edb96f;
+  /* Font Sizes */
+  --font-xxl: 3rem;
+  --font-xl: 2.5rem;
+  --font-lrg: 1.8rem;
+  --font-md: 1.5rem;
+  --font-sm: 1.2rem;
 }
 
+/* Font Sizes */
+/* XXLarge*/
+h1 {
+  font-size: var(--font-xxl);
+}
+/* XLarge*/
+h2 {
+  font-size: var(--font-xl);
+}
+
+/* Large */
+h3 {
+  font-size: var(--font-lrg);
+}
+
+/* Medium */
+.btn-header,
+footer {
+  font-size: var(--font-md);
+}
+
+/* Small */
+.dash-date,
+details,
+input,
+input[type="placeholder"],
+p,
+table th,
+table td {
+  font-size: var(--font-sm);
+}
+
+/* Body Item Alignment */
+
 body {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
+  align-items: center;
 }
 
 main {
   flex: 1;
+}
+
+/* Header Styles */
+header {
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.dash-date {
+  margin-bottom: 0.5rem;
 }
