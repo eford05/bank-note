@@ -59,6 +59,10 @@ tbody td,
   font-style: normal;
 }
 
+abbr {
+  text-decoration: none;
+}
+
 /* Display Flex Column */
 body,
 header,
@@ -77,6 +81,7 @@ main {
 .btn-container,
 details,
 #budget-form,
+.form-wrapper,
 table {
   width: 100%;
 }
@@ -117,6 +122,7 @@ h3 {
 
 /* Medium */
 .btn-header,
+.budget-btn,
 footer {
   font-size: var(--font-md);
 }
@@ -130,6 +136,43 @@ p,
 table th,
 table td {
   font-size: var(--font-sm);
+}
+
+/* Background Colors and Hover */
+.btn-balance {
+  background-color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+}
+
+.btn-balance:hover,
+.btn-balance:active {
+  background-color: var(--accent-light-gold);
+  border-color: var(--accent-light-gold);
+}
+
+.btn-income,
+.budget-btn {
+  background-color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+}
+
+.btn-income:hover,
+.btn-income:active,
+.budget-btn:hover,
+.budget-btn:active {
+  background-color: var(--accent-light-green);
+  border: 1px solid var(--accent-light-green);
+}
+
+.btn-expenses {
+  background-color: var(--accent-pink);
+  border: 1px solid var(--accent-pink);
+}
+
+.btn-expenses:hover,
+.btn-expenses:active {
+  background-color: var(--accent-light-pink);
+  border: 1px solid var(--accent-light-pink);
 }
 
 /* Body Item Alignment */
@@ -167,35 +210,32 @@ header {
   transition: all 0.5s ease;
 }
 
-.btn-balance {
-  background-color: var(--accent-gold);
-  border: 1px solid var(--accent-gold);
+/* Expense Tracker Styles */
+summary {
+  font-weight: 400;
 }
 
-.btn-balance:hover,
-.btn-balance:active {
-  background-color: var(--accent-light-gold);
-  border-color: var(--accent-light-gold);
+details p {
+  text-align: justify;
 }
 
-.btn-income {
-  background-color: var(--accent-green);
-  border: 1px solid var(--accent-green);
+/* Form Styles */
+#budget-form {
+  background-color: var(--lite-bg-color);
+  padding: 1.5rem 0;
+  margin: 0.8rem 0;
+  border-radius: 0.5rem;
 }
 
-.btn-income:hover,
-.btn-income:active {
-  background-color: var(--accent-light-green);
-  border: 1px solid var(--accent-light-green);
+.form-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1rem;
+  gap: 10px;
 }
 
-.btn-expenses {
-  background-color: var(--accent-pink);
-  border: 1px solid var(--accent-pink);
-}
-
-.btn-expenses:hover,
-.btn-expenses:active {
-  background-color: var(--accent-light-pink);
-  border: 1px solid var(--accent-light-pink);
+.budget-btn {
+  color: white;
+  border-radius: 0.25rem;
 }
