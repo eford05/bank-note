@@ -74,6 +74,7 @@ main {
 }
 
 /* width 100% */
+.btn-container,
 details,
 #budget-form,
 table {
@@ -87,6 +88,10 @@ table {
   --accent-pink: #f76d6c;
   --accent-green: #10606a;
   --accent-gold: #edb96f;
+  /* Hover Color Transition */
+  --accent-light-gold: hsl(35, 78%, 75%);
+  --accent-light-green: hsl(187, 74%, 34%);
+  --accent-light-pink: hsl(0, 90%, 75%);
   /* Font Sizes */
   --font-xxl: 3rem;
   --font-xl: 2.5rem;
@@ -146,4 +151,51 @@ header {
 
 .dash-date {
   margin-bottom: 0.5rem;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-header {
+  width: min(200px, 80% - 1rem);
+  color: white;
+  padding: 0.3rem 0;
+  border-radius: 0.25rem;
+  transition: all 0.5s ease;
+}
+
+.btn-balance {
+  background-color: var(--accent-gold);
+  border: 1px solid var(--accent-gold);
+}
+
+.btn-balance:hover,
+.btn-balance:active {
+  background-color: var(--accent-light-gold);
+  border-color: var(--accent-light-gold);
+}
+
+.btn-income {
+  background-color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+}
+
+.btn-income:hover,
+.btn-income:active {
+  background-color: var(--accent-light-green);
+  border: 1px solid var(--accent-light-green);
+}
+
+.btn-expenses {
+  background-color: var(--accent-pink);
+  border: 1px solid var(--accent-pink);
+}
+
+.btn-expenses:hover,
+.btn-expenses:active {
+  background-color: var(--accent-light-pink);
+  border: 1px solid var(--accent-light-pink);
 }
