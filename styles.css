@@ -82,7 +82,8 @@ main {
 details,
 #budget-form,
 .form-wrapper,
-table {
+table,
+footer {
   width: 100%;
 }
 
@@ -151,7 +152,8 @@ table td {
 }
 
 .btn-income,
-.budget-btn {
+.budget-btn,
+footer {
   background-color: var(--accent-green);
   border: 1px solid var(--accent-green);
 }
@@ -173,6 +175,19 @@ table td {
 .btn-expenses:active {
   background-color: var(--accent-light-pink);
   border: 1px solid var(--accent-light-pink);
+}
+
+#budget-form,
+table thead,
+table tfoot {
+  background-color: var(--lite-bg-color);
+}
+
+/* Font Color White */
+.btn-header,
+.budget-btn,
+footer {
+  color: white;
 }
 
 /* Body Item Alignment */
@@ -204,7 +219,6 @@ header {
 
 .btn-header {
   width: min(200px, 80% - 1rem);
-  color: white;
   padding: 0.3rem 0;
   border-radius: 0.25rem;
   transition: all 0.5s ease;
@@ -221,7 +235,6 @@ details p {
 
 /* Form Styles */
 #budget-form {
-  background-color: var(--lite-bg-color);
   padding: 1.5rem 0;
   margin: 0.8rem 0;
   border-radius: 0.5rem;
@@ -235,7 +248,57 @@ details p {
   gap: 10px;
 }
 
+input {
+  border: 0px transparent;
+  padding: 5px;
+}
+
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+::placeholder,
+input[type="date"] {
+  color: #555;
+}
+
 .budget-btn {
-  color: white;
   border-radius: 0.25rem;
+}
+
+/* Table Styles */
+table {
+  border-collapse: collapse;
+  text-align: right;
+}
+
+table th:first-child,
+table tbody td:first-child,
+tfoot td:first-child {
+  text-align: left;
+}
+
+table th,
+table td {
+  padding: 1rem;
+}
+
+table tr:nth-child(2) {
+  background-color: #fff3f056;
+}
+
+table tbody tr {
+  border-bottom: 1px solid var(--accent-gold);
+}
+
+.amount {
+  font-weight: 400;
+}
+
+/* Footer */
+footer {
+  margin-top: 1rem;
+  text-align: center;
+  padding: 0.5rem 0;
 }
